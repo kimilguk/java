@@ -16,8 +16,8 @@ public class AreaTest {//실행 클래스
 	public static void main(String[] args) {//아규먼트=Args=매개변수
 		CircleArea cArea = new CircleArea(5);//파라미터=인자, 클래스형 변수 cArea는 객체이다.
 		System.out.println("반지름이 5인 원의 넓이는 = "+ cArea.getArea());
-		boolean x = 1 < 2;
-		System.out.println(x);
+		boolean bool = 1 < 2;
+		System.out.println(bool);
 		CircleArea cArea2 = new CircleArea();
 		System.out.println("클래스를 초기화한 원의 넓이는 = "+ cArea2.getArea());
 	}
