@@ -14,11 +14,17 @@ class CircleArea {//원의 넓이를 구하는 기능의 클래스
 }
 public class AreaTest {//실행 클래스
 	public static void main(String[] args) {//아규먼트=Args=매개변수
-		CircleArea cA = new CircleArea(5);//파라미터=인자, 클래스형 변수 CA 객체이다.
-		System.out.println("반지름이 5인 원의 넓이는 = "+ cA.getArea());
-		boolean x = 1 < 2;
+		CircleArea cArea = new CircleArea(5);//파라미터=인자, 클래스형 변수 cArea는 객체이다.
+		System.out.println("반지름이 5인 원의 넓이는 = "+ cArea.getArea());
+		boolean bool = 1 < 2;
+		System.out.println(bool);
+		CircleArea cArea2 = new CircleArea();
+		System.out.println("클래스를 초기화한 원의 넓이는 = "+ cArea2.getArea());
+		int x = 3;
+		double y = (double) x; //3.0 처럼 소수점이 붙어서 출력된다.
+		System.out.println(y);
+		y = 3.2;
+		x = (int) y;//소수점이 없어진 3 이 출력된다.
 		System.out.println(x);
-		CircleArea cA2 = new CircleArea();
-		System.out.println("클래스를 초기화한 원의 넓이는 = "+ cA2.getArea());
 	}
 }
