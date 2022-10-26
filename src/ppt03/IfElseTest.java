@@ -23,5 +23,6 @@ public class IfElseTest {
 				System.out.println("음수 입니다.");
 			}
 		}
+		input.close();
 	}
 }
