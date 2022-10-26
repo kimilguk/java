@@ -9,13 +9,13 @@ public class VariableTest {
 		System.out.println(LETTER);
 		//변수는 크게 기초형과 참조형(클래스)로 구분한다.
 		//기본형은 숫자(byte,short,int,long,float,double)
-		int number1 = 1;//정수
+		int number1 = 100;//정수
 		Integer num1 = new Integer(100);
 		Integer num2 = 100;//위 처럼 긴 코드를 이 출처럼 간단하게 코딩한다.
 		long number2 = 7000001000000L;//큰정수
 		float number3 = 1f;//실수(소수점표시)
-		double number4 = 1d;//큰실수
-		System.out.println("숫자형 : int="+num2+" long="+number2+" float="+number3+" double="+number4);
+		double number4 = 1d;//큰실수, 아래 문자와 숫자를 더하면 문자로 인식된다.
+		System.out.println("숫자형 : int="+number1+num1+num2+" long="+number2+" float="+number3+" double="+number4);
 		//기초형 문자 char, 논리값 boolean
 		char english = 'a';//주의! 작은따옴표만 가능하다.
 		boolean logic = true;
