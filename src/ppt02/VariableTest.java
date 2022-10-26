@@ -10,7 +10,7 @@ public class VariableTest {
 		//변수는 크게 기초형과 참조형(클래스)로 구분한다.
 		//기본형은 숫자(byte,short,int,long,float,double)
 		int number1 = 100;//정수
-		Integer num1 = new Integer(100);//취소선은 앞으로 자바에서 지원하지 않는다는 의미
+		Integer num1 = new Integer(100); //취소선은 앞으로 자바에서 지원하지 않는다는 의미
 		Integer num2 = 100;//위 처럼 긴 코드를 이 출처럼 간단하게 코딩한다.
 		long number2 = 7000001000000L;//큰정수
 		float number3 = 1f;//실수(소수점표시)
