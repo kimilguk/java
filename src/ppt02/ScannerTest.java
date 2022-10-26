@@ -15,5 +15,6 @@ public class ScannerTest {
 		System.out.println(value1 + "을 "
 							+value2 + "로 나눈 나머지는 = "
 							+result + "입니다.");
+		input.close();
 	}
 }
