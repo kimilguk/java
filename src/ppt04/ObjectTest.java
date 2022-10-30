@@ -2,6 +2,12 @@ package ppt04;
 
 class ElectCalc {
 	private double dx, dy;
+	public ElectCalc() {
+	}
+	public ElectCalc(double dx, double dy) {
+		this.dx = dx;
+		this.dy = dy;
+	}
 	public void add() {	System.out.println("더하기 결과는 " + (dx+dy) );	}
 	public void add(int x, int y, int z) { //오버로드 메서드 생성	
 		System.out.println("더하기 결과는 " + (x+y+z) );	
