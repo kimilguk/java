@@ -1,4 +1,4 @@
-package ppt11;
+package ppt12;
 
 import java.awt.Font;
 import java.awt.Graphics;
