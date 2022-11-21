@@ -43,6 +43,9 @@ public class JTextAreaActionEvent extends JFrame implements ActionListener {
 		if(e.getSource()==addBtn || e.getSource()==jTextField) { //액션객체 비교
 			String apiURL = jTextField.getText();
 			jTextArea.append(apiURL + "\n");
+			jTextField.requestFocus();//입력 포커스 상태
+			jTextField.selectAll(); //신규내용 입력 편리하게 미리 선택한다.
+			//jTextField.setCaretPosition(jTextField.getDocument().getLength());
 		}
 		if(e.getSource()==deleteBtn) { //액션객체 비교
 			jTextArea.setText("");
