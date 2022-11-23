@@ -37,7 +37,7 @@ public class Notepad extends JFrame implements ActionListener {
             break;
         case "저장":
             if(fileName.equals("")) { //다른이름으로 저장과 일반 저장을 구분하기 위함, 처음 실행시 일반저장버튼을 눌렀을때 chooser가 열리도록 함
-               int ret = chooser.showSaveDialog(null);
+               int ret = chooser.showSaveDialog(null); //현재는 윈도우에 출력한다. 만약 (this)면 JFrame에 출력한다. 
                if(ret != chooser.APPROVE_OPTION) {
                   JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다!", "경고", JOptionPane.WARNING_MESSAGE);
                   return;
