@@ -27,8 +27,82 @@ public class Notepad extends JFrame implements ActionListener {
     String cmd; //액션리스너 이벤트구현에 사용할 명령어변수
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//액션 이벤트는 다음 시간에 구현 예정
+		cmd = e.getActionCommand();
+        switch (cmd) {
+        case "새파일":
+            newFile();
+            break;
+        case "열기":
+            openFile();
+            break;
+        case "저장":
+            if(fileName.equals("")) { //다른이름으로 저장과 일반 저장을 구분하기 위함, 처음 실행시 일반저장버튼을 눌렀을때 chooser가 열리도록 함
+               int ret = chooser.showSaveDialog(null);
+               if(ret != chooser.APPROVE_OPTION) {
+                  JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다!", "경고", JOptionPane.WARNING_MESSAGE);
+                  return;
+               }
+               fileName = chooser.getSelectedFile().getPath();
+            }
+            saveFile(textArea.getText()); //저장
+            break;
+        case "다른이름으로저장": //무조건 chooser로 다이얼로그 열어서 저장
+            int ret = chooser.showSaveDialog(null);
+            if (ret == JFileChooser.APPROVE_OPTION) {
+                fileName = chooser.getSelectedFile().getPath();
+                saveFile(textArea.getText());
+            }
+            break;
+        case "종료":
+        	System.exit(0);
+            break;
+        }
 	}
+	//액션에서 사용하는 외부메서드 생성(아래)
+	/* 새파일 */
+    public void newFile() {
+    	setTitle("새파일");
+    	fileName="";
+    	textArea.setText("");
+    }
+    /* 열기 */
+    public void openFile() {
+        int ret = chooser.showOpenDialog(null);
+        if (ret != JFileChooser.APPROVE_OPTION) {
+            JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다.", "경고", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            File inFile = chooser.getSelectedFile();
+            BufferedReader in;
+            try {
+                in = new BufferedReader(new FileReader(inFile));
+                String c;
+                textArea.setText("");
+                while ((c = in.readLine()) != null) {
+                	textArea.append(c + "\n");//\r\n
+                }
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        fileName = chooser.getSelectedFile().toString();
+        setTitle(chooser.getSelectedFile().getName());
+    }
+    /* 파일 저장 */
+    public void saveFile(String fn) {
+    	BufferedWriter out = null;
+    	File file = new File(fileName);
+    	try {
+    		out = new BufferedWriter(new FileWriter(file));
+    		out.write(fn);
+    		setTitle(file.getName());
+    		out.close();
+    	}
+    	catch(IOException e) {
+    		e.printStackTrace();
+    	}
+    }
     //생성자 메서드
     public Notepad() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
