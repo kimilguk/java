@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -79,6 +80,14 @@ public class JComboBoxActionEvent extends JFrame implements ActionListener {
 			System.out.println(index);
 			if(index > -1 && toggle)
 				JOptionPane.showMessageDialog(this,movieListMap.get(index));
+			/* 배경과 메세지창이 겹치지 않게 처리하는 방법 위 코드대신 아래 코드 사용 
+			if(index > -1 && toggle) {
+				JOptionPane optionPane = new JOptionPane(movieListMap.get(index),JOptionPane.INFORMATION_MESSAGE);
+				JDialog dialog = optionPane.createDialog("영화정보");
+				dialog.setLocation(0,0);
+				dialog.setAlwaysOnTop(true);
+				dialog.setVisible(true);
+			} */
 			toggle = true;
 		}
 	}
