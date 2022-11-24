@@ -31,60 +31,61 @@ public class Notepad extends JFrame implements ActionListener {
 		cmd = e.getActionCommand();
         switch (cmd) {
         case "새파일":
-            newFile();
+            newFile();//구현 메서드는 외부에..
             break;
         case "열기":
-            openFile();
+            openFile();//구현 메서드는 외부에..
             break;
         case "저장":
-            if(fileName.equals("")) { //다른이름으로 저장과 일반 저장을 구분하기 위함, 처음 실행시 일반저장버튼을 눌렀을때 chooser가 열리도록 함
+            if(fileName.equals("")) { //다른이름으로 저장과 일반 저장을 구분하기 위함, 처음 실행시 저장버튼을 눌렀을때 chooser가 열리도록 함
                int ret = chooser.showSaveDialog(null); //현재는 윈도우에 출력한다. 만약 (this)면 JFrame에 출력한다. 
-               if(ret != chooser.APPROVE_OPTION) {
+               if(ret != chooser.APPROVE_OPTION) {//Save 버튼을 클릭 한 상수 값과 비교
                   JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다!", "경고", JOptionPane.WARNING_MESSAGE);
                   return;
                }
-               fileName = chooser.getSelectedFile().getPath();
+               fileName = chooser.getSelectedFile().getPath();//JFileChooser 객체의 메서드로 파일 경로
             }
-            saveFile(textArea.getText()); //저장
+            saveFile(textArea.getText()); //저장 구현 메서드는 외부에...
             break;
         case "다른이름으로저장": //무조건 chooser로 다이얼로그 열어서 저장
-            int ret = chooser.showSaveDialog(null);
+            int ret = chooser.showSaveDialog(null);//저장하기 대화상자 띄우기
             if (ret == JFileChooser.APPROVE_OPTION) {
                 fileName = chooser.getSelectedFile().getPath();
-                saveFile(textArea.getText());
+                saveFile(textArea.getText());//구현 메서드는 외부에.
             }
             break;
         case "종료":
-        	System.exit(0);
+        	System.exit(0);//프로그램을 종료. 메모리에서 삭제한다.
             break;
         }
 	}
 	//액션에서 사용하는 외부메서드 생성(아래)
 	/* 새파일 */
     public void newFile() {
-    	setTitle("새파일");
-    	fileName="";
-    	textArea.setText("");
+    	setTitle("새파일");//프로그램 창의 타이틀을 변경한다.
+    	fileName="";//파일 이름을 초기화 해서 파일 저장 대화상자를 사용할 수 있도록 한다.
+    	textArea.setText("");//메모장 내용을 초기화 한다.
     }
     /* 열기 */
     public void openFile() {
-        int ret = chooser.showOpenDialog(null);
+        int ret = chooser.showOpenDialog(null);//열기 대화상자 띄우기
         if (ret != JFileChooser.APPROVE_OPTION) {
             JOptionPane.showMessageDialog(null, "파일을 선택하지 않았습니다.", "경고", JOptionPane.WARNING_MESSAGE);
             return;
         } else {
-            File inFile = chooser.getSelectedFile();
-            BufferedReader in;
-            try {
+            File inFile = chooser.getSelectedFile();//저장된 파일 객체를 생성한다.
+            BufferedReader in;//버퍼드 리더를 사용하여 처리 속도 향상을 한다.
+            try {//메서드 내부에서 예외처리를 한다.
                 in = new BufferedReader(new FileReader(inFile));
                 String c;
                 textArea.setText("");
+                //버퍼트에 저장된 내용을1줄 씩 읽어 들여서 스트링 객체에 저장.(아래)
                 while ((c = in.readLine()) != null) {
                 	textArea.append(c + "\n");//\r\n
                 }
-                in.close();
+                in.close();//작업 후 버퍼드 객체를 삭제해서 성능을 향상 시킨다.
             } catch (IOException e) {
-                e.printStackTrace();
+                e.printStackTrace();//콘솔에 에러를 출력한다.
             }
         }
         fileName = chooser.getSelectedFile().toString();
@@ -92,12 +93,12 @@ public class Notepad extends JFrame implements ActionListener {
     }
     /* 파일 저장 */
     public void saveFile(String fn) {
-    	BufferedWriter out = null;
-    	File file = new File(fileName);
+    	BufferedWriter out = null;//버퍼드 라이터를 사용하여 처리 속도 향상을 한다.
+    	File file = new File(fileName);//저장할 파일 객체를 생성한다.
     	try {
     		out = new BufferedWriter(new FileWriter(file));
     		out.write(fn);
-    		setTitle(file.getName());
+    		setTitle(file.getName());//프로그램 창의 타이틀을 변경한다.
     		out.close();
     	}
     	catch(IOException e) {
