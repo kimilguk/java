@@ -25,7 +25,8 @@ public class Notepad extends JFrame implements ActionListener {
     JFileChooser chooser = new JFileChooser(); //기존에 개발된 파일선택 컴포넌트
     String fileName = ""; //저장하거나 불러올 파일이름변수
     String cmd; //액션리스너 이벤트구현에 사용할 명령어변수
-	@Override
+    //액션리스너 이벤트구현(아래)
+    @Override
 	public void actionPerformed(ActionEvent e) {
 		cmd = e.getActionCommand();
         switch (cmd) {
