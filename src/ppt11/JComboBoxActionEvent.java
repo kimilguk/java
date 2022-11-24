@@ -78,7 +78,7 @@ public class JComboBoxActionEvent extends JFrame implements ActionListener {
 			int index = jComboBox.getSelectedIndex();
 			System.out.println(index);
 			if(index > -1 && toggle)
-				JOptionPane.showMessageDialog(this,movieListMap.get(index));
+				JOptionPane.showMessageDialog(null,movieListMap.get(index));
 			/* 배경과 메세지창이 겹치지 않게 처리하는 방법 위 if문대신 아래 코드사용 
 			if(index > -1 && toggle) {
 				JOptionPane optionPane = new JOptionPane(movieListMap.get(index),JOptionPane.INFORMATION_MESSAGE);
