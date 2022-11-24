@@ -1,8 +1,6 @@
-package ppt13;
+package ppt11;
 
-import java.io.Serializable;
-//클래스 데이터를 직렬화 하기 때문에 Serializable 인터페이스를 상속한다.
-public class Movie implements Serializable {
+public class Movie { //일별 박스오피스 영화정보 클래스
 	private String rank;//일별랭킹
 	private String movieNm;//영화이름
 	private String audiCnt;//일별관객수
@@ -11,9 +9,5 @@ public class Movie implements Serializable {
 		this.rank = rank;
 		this.movieNm = movieNm;
 		this.audiCnt = audiCnt;
-	}
-	@Override
-	public String toString() {
-		return "Movie [rank=" + rank + ", movieNm=" + movieNm + ", audiCnt=" + audiCnt + "]";
 	}
 }
