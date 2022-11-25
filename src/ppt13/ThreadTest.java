@@ -20,7 +20,6 @@ public class ThreadTest extends Thread {
 		ThreadTest T3 = new ThreadTest("작업3");
 		T1.start();
 		synchronized(T1) {//객체를 synchronized 키워드로 감싸주면 스레드 작업이 1,2,3 순서대로 실행된다.
-
 			T1.wait();
 		}
 		T2.start();
