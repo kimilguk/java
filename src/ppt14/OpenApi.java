@@ -18,7 +18,7 @@ public class OpenApi {
 		HttpURLConnection hConnection = (HttpURLConnection) url.openConnection();//형변환
 		hConnection.setRequestMethod("GET");//요청주소가 오픈된 주소 <-> POST 
 		System.out.println("응답코드 확인: " + hConnection.getResponseCode());//정상 200
-		//json 데이터를 읽어 들이기 버퍼드 리더로 문자열 읽어들이기
+		//RestAPI 데이터를 읽어 들이기 버퍼드 리더로 문자열 읽어들이기
 		bReader = new BufferedReader(new InputStreamReader(hConnection.getInputStream()));
 	}
 }
