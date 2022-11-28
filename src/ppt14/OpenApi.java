@@ -14,7 +14,7 @@ public class OpenApi {
 		String requestURL = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20220101";
 		serviceAPI(requestURL);//RestAPI 서버에서 제이슨데이터를 가져오는 메서드. 
 	}
-	private static JSONArray serviceAPI(String requestURL) throws Exception {
+	public static JSONArray serviceAPI(String requestURL) throws Exception {
 		//URL에서 json데이터를 가져오는 구문(아래)
 		BufferedReader bReader = null;
 		URL url = new URL(requestURL);//스트링 url을 자바용 URL로 변경한다.
